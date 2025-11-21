@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FunCoin - Revolutionary Cryptocurrency</title>
+    <meta
+      name="description"
+      content="FunCoin - Making cryptocurrency fun, accessible, and rewarding for everyone"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                DEFAULT: "#FFD700",
+                light: "#FFE55C",
+                dark: "#FFA500",
+              },
+              dark: {
+                DEFAULT: "#0a0a0a",
+                light: "#1a1a1a",
+                lighter: "#2a2a2a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        color: #ffffff;
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .bg-gradient-gold {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+      }
+
+      .glass {
+        background: rgba(26, 26, 26, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+        }
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+
+      .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: #ffd700;
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: particle-float 10s infinite;
+      }
+
+      @keyframes particle-float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-100px) translateX(50px);
+          opacity: 0.8;
+        }
+      }
+    </style>
+  </head>
+  <body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-gold/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="#" class="flex items-center space-x-2">
+            <img
+              src="image/Logo.png"
+              alt="FunCoin Logo"
+              class="h-10 w-10 object-contain"
+            />
+            <span class="text-2xl font-bold text-gradient">FunCoin</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="hover:text-gold transition">About</a>
+            <a href="#roadmap" class="hover:text-gold transition">Roadmap</a>
+            <a href="#team" class="hover:text-gold transition">Team</a>
+            <a href="#faq" class="hover:text-gold transition">FAQ</a>
+            <a
+              href="#"
+              class="px-4 py-2 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              Get Started
+            </a>
+          </div>
+
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 rounded-lg hover:bg-dark-light transition"
+            aria-label="Toggle mobile menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden glass border-t border-gold/20"
+      >
+        <div class="px-4 py-4 space-y-3">
+          <a href="#about" class="block py-2 hover:text-gold transition"
+            >About</a
+          >
+          <a href="#roadmap" class="block py-2 hover:text-gold transition"
+            >Roadmap</a
+          >
+          <a href="#team" class="block py-2 hover:text-gold transition">Team</a>
+          <a href="#faq" class="block py-2 hover:text-gold transition">FAQ</a>
+          <a
+            href="#"
+            class="block py-2 px-4 bg-gradient-gold text-black rounded-lg font-semibold text-center"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+    >
+      <!-- Background Banner -->
+      <div class="absolute inset-0">
+        <img
+          src="image/banner.png"
+          alt="FunCoin Banner"
+          class="w-full h-full object-cover opacity-20"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark"
+        ></div>
+      </div>
+      <div id="particles" class="absolute inset-0"></div>
+
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <img
+          src="image/Logo.png"
+          alt="FunCoin Logo"
+          class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 animate-float"
+        />
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          Welcome to <span class="text-gradient">FunCoin</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          The revolutionary cryptocurrency bringing fun and innovation to the
+          blockchain world
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <a
+            href="#about"
+            class="px-8 py-4 bg-gradient-gold text-black rounded-lg font-bold text-lg hover:opacity-90 transition animate-glow"
+          >
+            Learn More
+          </a>
+          <a
+            href="#"
+            class="px-8 py-4 glass border-2 border-gold rounded-lg font-bold text-lg hover:bg-gold/10 transition"
+          >
+            Get Started
+          </a>
+        </div>
+
+        <!-- Features -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+          <div class="glass p-6 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">🪙</div>
+            <h3 class="font-bold text-lg mb-2">Decentralized</h3>
+            <p class="text-gray-400 text-sm">Fully decentralized network</p>
+          </div>
+          <div class="glass p-6 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">📈</div>
+            <h3 class="font-bold text-lg mb-2">High Growth</h3>
+            <p class="text-gray-400 text-sm">Exponential potential</p>
+          </div>
+          <div class="glass p-6 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">🛡️</div>
+            <h3 class="font-bold text-lg mb-2">Secure</h3>
+            <p class="text-gray-400 text-sm">Military-grade security</p>
+          </div>
+          <div class="glass p-6 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">⚡</div>
+            <h3 class="font-bold text-lg mb-2">Fast</h3>
+            <p class="text-gray-400 text-sm">Lightning-fast transactions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Price -->
+    <div class="bg-dark-lighter py-4 border-y border-gold/20">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-8"
+      >
+        <div class="flex items-center gap-2">
+          <span class="text-gray-400">FunCoin Price:</span>
+          <span class="text-2xl font-bold text-gold" id="price">$0.00</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-gray-400">24h Change:</span>
+          <span class="font-bold text-green-500" id="change">+0.00%</span>
+        </div>
+        <p class="text-xs text-gray-500">*Demo data</p>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            About <span class="text-gradient">FunCoin</span>
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            FunCoin is more than just a cryptocurrency—it's a movement towards
+            making blockchain technology accessible, enjoyable, and rewarding
+            for everyone.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Our Vision</h3>
+            <p class="text-gray-300 leading-relaxed">
+              We envision a world where cryptocurrency is fun, accessible, and
+              beneficial for all. FunCoin combines cutting-edge blockchain
+              technology with a community-first approach.
+            </p>
+          </div>
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Our Mission</h3>
+            <p class="text-gray-300 leading-relaxed">
+              To build a sustainable, community-driven cryptocurrency ecosystem
+              that rewards holders, encourages participation, and brings
+              innovation to the DeFi space.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contract Address -->
+        <div class="glass p-8 rounded-xl max-w-3xl mx-auto">
+          <h3 class="text-2xl font-bold mb-4 text-center">Contract Address</h3>
+          <div class="flex items-center justify-between bg-dark p-4 rounded-lg">
+            <code class="text-gold text-sm md:text-base break-all" id="contract"
+              >0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb</code
+            >
+            <button
+              onclick="copyContract()"
+              class="ml-4 p-2 hover:bg-dark-light rounded-lg transition"
+              title="Copy to clipboard"
+              aria-label="Copy contract address"
+            >
+              📋
+            </button>
+          </div>
+          <p class="text-center text-gray-400 text-sm mt-4">
+            Always verify the contract address before making any transactions
+          </p>
+        </div>
+
+        <!-- Tokenomics -->
+        <div class="mt-16 grid md:grid-cols-3 gap-6">
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Total Supply</p>
+            <p class="text-3xl font-bold text-gradient">1,000,000,000</p>
+            <p class="text-gold text-sm mt-1">FUNC</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Circulating Supply</p>
+            <p class="text-3xl font-bold text-gradient">750,000,000</p>
+            <p class="text-gold text-sm mt-1">FUNC</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Market Cap</p>
+            <p class="text-3xl font-bold text-gradient">$50M</p>
+            <p class="text-gold text-sm mt-1">USD</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-gradient">Roadmap</span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Our journey to revolutionize cryptocurrency
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Q1 2024 -->
+          <div class="glass p-6 rounded-xl border-2 border-green-500">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-gold">Q1 2024</h3>
+              <span
+                class="text-sm px-3 py-1 rounded-full bg-green-500/20 text-green-500"
+                >Completed</span
+              >
+            </div>
+            <h4 class="text-xl font-semibold mb-4">Foundation</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span class="text-gray-300">Smart contract development</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span class="text-gray-300">Security audit</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span class="text-gray-300">Website launch</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span class="text-gray-300">Community building</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Q2 2024 -->
+          <div class="glass p-6 rounded-xl border-2 border-gold">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-gold">Q2 2024</h3>
+              <span class="text-sm px-3 py-1 rounded-full bg-gold/20 text-gold"
+                >In Progress</span
+              >
+            </div>
+            <h4 class="text-xl font-semibold mb-4">Launch</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-1">•</span>
+                <span class="text-gray-300">Token presale</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-1">•</span>
+                <span class="text-gray-300">DEX listing</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-1">•</span>
+                <span class="text-gray-300">Marketing campaign</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-1">•</span>
+                <span class="text-gray-300">Partnership announcements</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Q3 2024 -->
+          <div class="glass p-6 rounded-xl border-2 border-gray-600">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-gold">Q3 2024</h3>
+              <span
+                class="text-sm px-3 py-1 rounded-full bg-gray-700 text-gray-400"
+                >Upcoming</span
+              >
+            </div>
+            <h4 class="text-xl font-semibold mb-4">Growth</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">CEX listings</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">Mobile app development</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">Staking platform</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">NFT marketplace</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Q4 2024 -->
+          <div class="glass p-6 rounded-xl border-2 border-gray-600">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-gold">Q4 2024</h3>
+              <span
+                class="text-sm px-3 py-1 rounded-full bg-gray-700 text-gray-400"
+                >Upcoming</span
+              >
+            </div>
+            <h4 class="text-xl font-semibold mb-4">Expansion</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">Global partnerships</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">DeFi integrations</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">Governance launch</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gray-400 mt-1">•</span>
+                <span class="text-gray-300">Ecosystem expansion</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Meet Our <span class="text-gradient">Team</span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            The brilliant minds behind FunCoin
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="glass p-6 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div
+              class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center text-4xl"
+            >
+              👨‍💼
+            </div>
+            <h3 class="text-xl font-bold mb-1">John Doe</h3>
+            <p class="text-gold mb-3">Founder & CEO</p>
+            <p class="text-gray-400 text-sm mb-4">
+              Blockchain expert with 10+ years in fintech
+            </p>
+            <div class="flex justify-center gap-3">
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="LinkedIn"
+                >🔗</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="Twitter"
+                >🐦</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="GitHub"
+                >💼</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass p-6 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div
+              class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center text-4xl"
+            >
+              👩‍💻
+            </div>
+            <h3 class="text-xl font-bold mb-1">Jane Smith</h3>
+            <p class="text-gold mb-3">CTO</p>
+            <p class="text-gray-400 text-sm mb-4">
+              Former Google engineer, smart contract specialist
+            </p>
+            <div class="flex justify-center gap-3">
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="LinkedIn"
+                >🔗</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="Twitter"
+                >🐦</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="GitHub"
+                >💼</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass p-6 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div
+              class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center text-4xl"
+            >
+              👨‍🎨
+            </div>
+            <h3 class="text-xl font-bold mb-1">Mike Johnson</h3>
+            <p class="text-gold mb-3">Head of Marketing</p>
+            <p class="text-gray-400 text-sm mb-4">
+              Growth hacker with successful crypto launches
+            </p>
+            <div class="flex justify-center gap-3">
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="LinkedIn"
+                >🔗</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="Twitter"
+                >🐦</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="GitHub"
+                >💼</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass p-6 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div
+              class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center text-4xl"
+            >
+              👩‍🔬
+            </div>
+            <h3 class="text-xl font-bold mb-1">Sarah Williams</h3>
+            <p class="text-gold mb-3">Lead Developer</p>
+            <p class="text-gray-400 text-sm mb-4">
+              Full-stack developer, DeFi protocol architect
+            </p>
+            <div class="flex justify-center gap-3">
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="LinkedIn"
+                >🔗</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="Twitter"
+                >🐦</a
+              >
+              <a
+                href="#"
+                class="p-2 hover:bg-dark-light rounded-lg transition"
+                aria-label="GitHub"
+                >💼</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-dark">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Frequently Asked <span class="text-gradient">Questions</span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Everything you need to know about FunCoin
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="glass rounded-xl overflow-hidden">
+            <button
+              onclick="toggleFaq(0)"
+              class="w-full p-6 flex items-center justify-between text-left hover:bg-dark-light/50 transition"
+            >
+              <h3 class="text-lg font-semibold pr-4">What is FunCoin?</h3>
+              <span class="faq-icon text-gold text-2xl">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-300 leading-relaxed">
+                FunCoin is a revolutionary cryptocurrency designed to make
+                blockchain technology accessible and enjoyable for everyone.
+                Built on secure smart contracts, FunCoin combines innovation
+                with community-driven development.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass rounded-xl overflow-hidden">
+            <button
+              onclick="toggleFaq(1)"
+              class="w-full p-6 flex items-center justify-between text-left hover:bg-dark-light/50 transition"
+            >
+              <h3 class="text-lg font-semibold pr-4">How can I buy FunCoin?</h3>
+              <span class="faq-icon text-gold text-2xl">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-300 leading-relaxed">
+                You can purchase FunCoin on major decentralized exchanges (DEX)
+                like Uniswap or PancakeSwap. Simply connect your wallet, enter
+                the contract address, and swap your preferred cryptocurrency for
+                FunCoin.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass rounded-xl overflow-hidden">
+            <button
+              onclick="toggleFaq(2)"
+              class="w-full p-6 flex items-center justify-between text-left hover:bg-dark-light/50 transition"
+            >
+              <h3 class="text-lg font-semibold pr-4">Is FunCoin safe?</h3>
+              <span class="faq-icon text-gold text-2xl">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-300 leading-relaxed">
+                Yes! FunCoin has undergone comprehensive security audits by
+                leading blockchain security firms. Our smart contracts are
+                open-source and have been thoroughly tested to ensure the safety
+                of your investments.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass rounded-xl overflow-hidden">
+            <button
+              onclick="toggleFaq(3)"
+              class="w-full p-6 flex items-center justify-between text-left hover:bg-dark-light/50 transition"
+            >
+              <h3 class="text-lg font-semibold pr-4">
+                What makes FunCoin different?
+              </h3>
+              <span class="faq-icon text-gold text-2xl">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-300 leading-relaxed">
+                FunCoin stands out with its community-first approach,
+                transparent development, regular holder rewards, and commitment
+                to continuous innovation. We focus on creating real value and
+                utility for our token holders.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass rounded-xl overflow-hidden">
+            <button
+              onclick="toggleFaq(4)"
+              class="w-full p-6 flex items-center justify-between text-left hover:bg-dark-light/50 transition"
+            >
+              <h3 class="text-lg font-semibold pr-4">
+                How do I store FunCoin?
+              </h3>
+              <span class="faq-icon text-gold text-2xl">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-300 leading-relaxed">
+                FunCoin can be stored in any ERC-20 compatible wallet such as
+                MetaMask, Trust Wallet, or hardware wallets like Ledger. Always
+                ensure you keep your private keys secure and never share them
+                with anyone.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass rounded-xl overflow-hidden">
+            <button
+              onclick="toggleFaq(5)"
+              class="w-full p-6 flex items-center justify-between text-left hover:bg-dark-light/50 transition"
+            >
+              <h3 class="text-lg font-semibold pr-4">
+                What are the tokenomics?
+              </h3>
+              <span class="faq-icon text-gold text-2xl">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-300 leading-relaxed">
+                FunCoin has a total supply of 1 billion tokens. 75% is in
+                circulation, 15% is reserved for development and marketing, and
+                10% is locked for liquidity. We have a deflationary mechanism
+                with a 2% burn on transactions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-lighter border-t border-gold/20 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- Brand -->
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <img
+                src="image/Logo.png"
+                alt="FunCoin Logo"
+                class="h-8 w-8 object-contain"
+              />
+              <h3 class="text-2xl font-bold text-gradient">FunCoin</h3>
+            </div>
+            <p class="text-gray-400 text-sm">
+              Making cryptocurrency fun, accessible, and rewarding for everyone.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-gold transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#roadmap"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Roadmap</a
+                >
+              </li>
+              <li>
+                <a href="#team" class="text-gray-400 hover:text-gold transition"
+                  >Team</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="text-gray-400 hover:text-gold transition"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="font-bold mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Whitepaper</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Audit Report</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Brand Kit</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h4 class="font-bold mb-4">Community</h4>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Twitter"
+                >🐦</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Telegram"
+                >📱</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Discord"
+                >💬</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="GitHub"
+                >💻</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gold/20 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>© 2024 FunCoin. All rights reserved.</p>
+          <p class="mt-2">
+            <a href="#" class="hover:text-gold transition">Privacy Policy</a>
+            •
+            <a href="#" class="hover:text-gold transition">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // FAQ toggle
+      function toggleFaq(index) {
+        const contents = document.querySelectorAll(".faq-content");
+        const icons = document.querySelectorAll(".faq-icon");
+
+        contents[index].classList.toggle("hidden");
+        icons[index].textContent = contents[index].classList.contains("hidden")
+          ? "+"
+          : "−";
+      }
+
+      // Copy contract address
+      function copyContract() {
+        const contract = document.getElementById("contract").textContent;
+        navigator.clipboard.writeText(contract).then(() => {
+          alert("Contract address copied to clipboard!");
+        });
+      }
+
+      // Animated particles
+      function createParticles() {
+        const container = document.getElementById("particles");
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 10 + "s";
+          container.appendChild(particle);
+        }
+      }
+
+      // Simulate live price (demo)
+      function updatePrice() {
+        const basePrice = 0.0042;
+        const variation = (Math.random() - 0.5) * 0.0002;
+        const price = basePrice + variation;
+        const change = ((variation / basePrice) * 100).toFixed(2);
+
+        document.getElementById("price").textContent = "$" + price.toFixed(4);
+        document.getElementById("change").textContent =
+          (change >= 0 ? "+" : "") + change + "%";
+        document.getElementById("change").className =
+          "font-bold " + (change >= 0 ? "text-green-500" : "text-red-500");
+      }
+
+      // Initialize
+      window.addEventListener("load", function () {
+        createParticles();
+        updatePrice();
+        setInterval(updatePrice, 5000); // Update price every 5 seconds
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu if open
+            document.getElementById("mobile-menu").classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
