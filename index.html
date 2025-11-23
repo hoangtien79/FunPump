@@ -11,6 +11,10 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Auth System -->
+    <script src="auth.js"></script>
+=======
 
     <!-- Custom Tailwind Config -->
     <script>
@@ -117,6 +121,57 @@
           opacity: 0.8;
         }
       }
+
+      /* Auth Modal Styles */
+      .modal-backdrop {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+      }
+
+      .animate-slide-in {
+        animation: slideIn 0.3s ease-out;
+      }
+
+      .animate-slide-out {
+        animation: slideOut 0.3s ease-in;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+
+      .modal-content {
+        animation: modalFadeIn 0.3s ease-out;
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
     </style>
   </head>
   <body class="scroll-smooth">
@@ -138,12 +193,76 @@
             <a href="#roadmap" class="hover:text-gold transition">Roadmap</a>
             <a href="#team" class="hover:text-gold transition">Team</a>
             <a href="#faq" class="hover:text-gold transition">FAQ</a>
-            <a
-              href="#"
-              class="px-4 py-2 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition"
-            >
-              Get Started
-            </a>
+            
+            <!-- Logged Out Buttons -->
+            <div class="auth-logged-out flex items-center space-x-3">
+              <button
+                onclick="authSystem.openModal('loginModal')"
+                class="px-4 py-2 hover:bg-dark-light rounded-lg font-semibold transition"
+              >
+                Login
+              </button>
+              <button
+                onclick="authSystem.openModal('registerModal')"
+                class="px-4 py-2 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition"
+              >
+                Register
+              </button>
+            </div>
+
+            <!-- Logged In User Menu -->
+            <div class="auth-logged-in hidden relative">
+              <button
+                id="userMenuBtn"
+                class="flex items-center space-x-2 px-4 py-2 glass rounded-lg hover:border-gold/50 transition"
+              >
+                <div class="w-8 h-8 rounded-full bg-gradient-gold flex items-center justify-center text-black font-bold">
+                  <span class="user-initial">U</span>
+                </div>
+                <span class="user-name font-semibold">User</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <div id="userDropdown" class="hidden absolute right-0 mt-2 w-64 glass rounded-lg shadow-xl border border-gold/20 overflow-hidden">
+                <div class="p-4 border-b border-gold/20">
+                  <p class="font-semibold user-name">User Name</p>
+                  <p class="text-sm text-gray-400 user-email">user@email.com</p>
+                </div>
+                <a href="#dashboard" class="block px-4 py-3 hover:bg-dark-light transition">
+                  <span class="flex items-center gap-2">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                  </span>
+                </a>
+                <a href="#profile" class="block px-4 py-3 hover:bg-dark-light transition">
+                  <span class="flex items-center gap-2">
+                    <span>👤</span>
+                    <span>Profile</span>
+                  </span>
+                </a>
+                <a href="#wallet" class="block px-4 py-3 hover:bg-dark-light transition">
+                  <span class="flex items-center gap-2">
+                    <span>💼</span>
+                    <span>Wallet</span>
+                  </span>
+                </a>
+                <a href="#settings" class="block px-4 py-3 hover:bg-dark-light transition">
+                  <span class="flex items-center gap-2">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                  </span>
+                </a>
+                <button onclick="authSystem.logout()" class="w-full text-left px-4 py-3 hover:bg-dark-light transition border-t border-gold/20 text-red-400">
+                  <span class="flex items-center gap-2">
+                    <span>🚪</span>
+                    <span>Logout</span>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
 
           <button
@@ -174,20 +293,46 @@
         class="hidden md:hidden glass border-t border-gold/20"
       >
         <div class="px-4 py-4 space-y-3">
-          <a href="#about" class="block py-2 hover:text-gold transition"
-            >About</a
-          >
-          <a href="#roadmap" class="block py-2 hover:text-gold transition"
-            >Roadmap</a
-          >
+          <a href="#about" class="block py-2 hover:text-gold transition">About</a>
+          <a href="#roadmap" class="block py-2 hover:text-gold transition">Roadmap</a>
           <a href="#team" class="block py-2 hover:text-gold transition">Team</a>
           <a href="#faq" class="block py-2 hover:text-gold transition">FAQ</a>
-          <a
-            href="#"
-            class="block py-2 px-4 bg-gradient-gold text-black rounded-lg font-semibold text-center"
-          >
-            Get Started
-          </a>
+          
+          <!-- Mobile Auth Buttons -->
+          <div class="auth-logged-out space-y-2 pt-2 border-t border-gold/20">
+            <button
+              onclick="authSystem.openModal('loginModal')"
+              class="block w-full py-2 px-4 text-center hover:bg-dark-light rounded-lg font-semibold transition"
+            >
+              Login
+            </button>
+            <button
+              onclick="authSystem.openModal('registerModal')"
+              class="block w-full py-2 px-4 bg-gradient-gold text-black rounded-lg font-semibold text-center"
+            >
+              Register
+            </button>
+          </div>
+
+          <!-- Mobile User Menu -->
+          <div class="auth-logged-in hidden pt-2 border-t border-gold/20">
+            <div class="flex items-center gap-3 mb-3 p-2">
+              <div class="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center text-black font-bold">
+                <span class="user-initial">U</span>
+              </div>
+              <div>
+                <p class="font-semibold user-name">User</p>
+                <p class="text-xs text-gray-400 user-email">user@email.com</p>
+              </div>
+            </div>
+            <a href="#dashboard" class="block py-2 hover:text-gold transition">Dashboard</a>
+            <a href="#profile" class="block py-2 hover:text-gold transition">Profile</a>
+            <a href="#wallet" class="block py-2 hover:text-gold transition">Wallet</a>
+            <a href="#settings" class="block py-2 hover:text-gold transition">Settings</a>
+            <button onclick="authSystem.logout()" class="block w-full text-left py-2 text-red-400 hover:text-red-300 transition">
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </nav>
@@ -242,11 +387,11 @@
 
         <!-- Features -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-          <div class="glass p-6 rounded-xl hover:border-gold/50 transition">
+          <a href="decentralized.html" class="glass p-6 rounded-xl hover:border-gold/50 transition cursor-pointer">
             <div class="text-4xl mb-4">🪙</div>
             <h3 class="font-bold text-lg mb-2">Decentralized</h3>
             <p class="text-gray-400 text-sm">Fully decentralized network</p>
-          </div>
+          </a>
           <div class="glass p-6 rounded-xl hover:border-gold/50 transition">
             <div class="text-4xl mb-4">📈</div>
             <h3 class="font-bold text-lg mb-2">High Growth</h3>
@@ -321,7 +466,7 @@
           <h3 class="text-2xl font-bold mb-4 text-center">Contract Address</h3>
           <div class="flex items-center justify-between bg-dark p-4 rounded-lg">
             <code class="text-gold text-sm md:text-base break-all" id="contract"
-              >0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb</code
+              >0x35385e9B35537338C4aB586048FD34D085B138b8</code
             >
             <button
               onclick="copyContract()"
@@ -514,7 +659,7 @@
             >
               👨‍💼
             </div>
-            <h3 class="text-xl font-bold mb-1">John Doe</h3>
+            <h3 class="text-xl font-bold mb-1">Donald Tommy T</h3>
             <p class="text-gold mb-3">Founder & CEO</p>
             <p class="text-gray-400 text-sm mb-4">
               Blockchain expert with 10+ years in fintech
@@ -779,8 +924,435 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark-lighter border-t border-gold/20 py-12">
+    <!-- User Dashboard Section -->
+    <section id="dashboard" class="auth-logged-in hidden py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Welcome back, <span class="text-gradient user-name">User</span>!
+          </h2>
+          <p class="text-xl text-gray-300">Manage your FunCoin account</p>
+        </div>
+
+        <!-- Account Stats -->
+        <div class="grid md:grid-cols-4 gap-6 mb-12">
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">FunCoin Balance</p>
+            <p class="text-3xl font-bold text-gradient"><span class="user-balance">0</span> FUNC</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">USD Value</p>
+            <p class="text-3xl font-bold text-green-500">$0.00</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">24h Change</p>
+            <p class="text-3xl font-bold text-green-500">+0.00%</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Rank</p>
+            <p class="text-3xl font-bold text-gold">#1,234</p>
+          </div>
+        </div>
+
+        <!-- Main Dashboard Content -->
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Profile Card -->
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+              <span>👤</span>
+              <span>Profile</span>
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-20 h-20 rounded-full bg-gradient-gold flex items-center justify-center text-3xl text-black font-bold">
+                  <span class="user-initial">U</span>
+                </div>
+                <div>
+                  <p class="font-bold text-lg user-name">User Name</p>
+                  <p class="text-gray-400 user-username">@username</p>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-gold/20 space-y-2">
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Email:</span>
+                  <span class="user-email">user@email.com</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Status:</span>
+                  <span id="verificationBadge" class="text-yellow-500">⚠ Not Verified</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Member Since:</span>
+                  <span>2024</span>
+                </div>
+              </div>
+              <button class="w-full mt-4 px-4 py-2 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition">
+                Edit Profile
+              </button>
+            </div>
+          </div>
+
+          <!-- Wallet Connection -->
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+              <span>💼</span>
+              <span>Wallet</span>
+            </h3>
+            <div class="space-y-4">
+              <div class="p-4 bg-dark rounded-lg">
+                <p class="text-gray-400 text-sm mb-2">Wallet Address</p>
+                <p id="walletDisplay" class="hidden font-mono text-gold break-all">Not Connected</p>
+                <p id="walletNotConnected" class="text-gray-500">No wallet connected</p>
+              </div>
+              <button
+                id="walletConnectBtn"
+                onclick="authSystem.connectWallet()"
+                class="w-full px-4 py-3 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition flex items-center justify-center gap-2"
+              >
+                <span>🦊</span>
+                <span>Connect MetaMask</span>
+              </button>
+              <button
+                id="walletDisconnectBtn"
+                onclick="authSystem.disconnectWallet()"
+                class="hidden w-full px-4 py-3 bg-red-500 text-white rounded-lg font-semibold hover:opacity-90 transition"
+              >
+                Disconnect Wallet
+              </button>
+              <div class="pt-4 border-t border-gold/20">
+                <p class="text-sm text-gray-400 mb-3">Quick Actions</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <button class="px-3 py-2 glass rounded-lg hover:border-gold/50 transition text-sm">
+                    Send
+                  </button>
+                  <button class="px-3 py-2 glass rounded-lg hover:border-gold/50 transition text-sm">
+                    Receive
+                  </button>
+                  <button class="px-3 py-2 glass rounded-lg hover:border-gold/50 transition text-sm">
+                    Swap
+                  </button>
+                  <button class="px-3 py-2 glass rounded-lg hover:border-gold/50 transition text-sm">
+                    Stake
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Settings -->
+          <div class="glass p-6 rounded-xl">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+              <span>🔒</span>
+              <span>Security</span>
+            </h3>
+            <div class="space-y-4">
+              <div class="p-4 bg-dark rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-semibold">Email Verification</span>
+                  <span id="emailVerificationStatus" class="text-yellow-500">Pending</span>
+                </div>
+                <button
+                  onclick="authSystem.verifyEmail()"
+                  class="text-sm text-gold hover:underline"
+                >
+                  Verify Now
+                </button>
+              </div>
+              
+              <div class="p-4 bg-dark rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-semibold">Two-Factor Auth</span>
+                  <span id="twoFactorStatus" class="text-gray-400">Disabled</span>
+                </div>
+                <button
+                  onclick="authSystem.enableTwoFactor()"
+                  class="text-sm text-gold hover:underline"
+                >
+                  Enable 2FA
+                </button>
+              </div>
+
+              <div class="p-4 bg-dark rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-semibold">Password</span>
+                  <span class="text-green-500">Strong</span>
+                </div>
+                <button class="text-sm text-gold hover:underline">
+                  Change Password
+                </button>
+              </div>
+
+              <button class="w-full mt-4 px-4 py-2 glass border-2 border-gold rounded-lg font-semibold hover:bg-gold/10 transition">
+                Security Settings
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="mt-12 glass p-6 rounded-xl">
+          <h3 class="text-2xl font-bold mb-6">Recent Activity</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 bg-dark rounded-lg">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <span class="text-green-500">↓</span>
+                </div>
+                <div>
+                  <p class="font-semibold">Received FunCoin</p>
+                  <p class="text-sm text-gray-400">2 hours ago</p>
+                </div>
+              </div>
+              <p class="font-bold text-green-500">+100 FUNC</p>
+            </div>
+            <div class="text-center text-gray-400 py-8">
+              <p>No recent transactions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop">
+      <div class="glass p-8 rounded-2xl max-w-md w-full mx-4 border-2 border-gold/20 modal-content">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-bold text-gradient">Login</h2>
+          <button onclick="authSystem.closeModal('loginModal')" class="text-gray-400 hover:text-white text-2xl">
+            ×
+          </button>
+        </div>
+
+        <form id="loginForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Email or Username</label>
+            <input
+              type="text"
+              name="emailOrUsername"
+              required
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Enter your email or username"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Password</label>
+            <input
+              type="password"
+              name="password"
+              required
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" name="rememberMe" class="w-4 h-4 accent-gold" />
+              <span class="text-sm">Remember me</span>
+            </label>
+            <a href="#" class="text-sm text-gold hover:underline">Forgot password?</a>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-4 py-3 bg-gradient-gold text-black rounded-lg font-bold hover:opacity-90 transition"
+          >
+            Login
+          </button>
+        </form>
+
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gold/20"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-dark-light text-gray-400">Or continue with</span>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <button
+              onclick="authSystem.socialLogin('Google')"
+              class="px-4 py-3 glass rounded-lg hover:border-gold/50 transition flex items-center justify-center"
+              title="Login with Google"
+            >
+              <span class="text-2xl">🔍</span>
+            </button>
+            <button
+              onclick="authSystem.socialLogin('Facebook')"
+              class="px-4 py-3 glass rounded-lg hover:border-gold/50 transition flex items-center justify-center"
+              title="Login with Facebook"
+            >
+              <span class="text-2xl">📘</span>
+            </button>
+            <button
+              onclick="authSystem.socialLogin('Twitter')"
+              class="px-4 py-3 glass rounded-lg hover:border-gold/50 transition flex items-center justify-center"
+              title="Login with Twitter"
+            >
+              <span class="text-2xl">🐦</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="mt-6 text-center text-gray-400">
+          Don't have an account?
+          <button
+            onclick="authSystem.closeModal('loginModal'); authSystem.openModal('registerModal')"
+            class="text-gold hover:underline font-semibold"
+          >
+            Register here
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop">
+      <div class="glass p-8 rounded-2xl max-w-md w-full mx-4 border-2 border-gold/20 modal-content max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-bold text-gradient">Register</h2>
+          <button onclick="authSystem.closeModal('registerModal')" class="text-gray-400 hover:text-white text-2xl">
+            ×
+          </button>
+        </div>
+
+        <form id="registerForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              required
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Username</label>
+            <input
+              type="text"
+              name="username"
+              required
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Choose a username"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Password</label>
+            <input
+              type="password"
+              name="password"
+              required
+              minlength="8"
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Create a strong password"
+            />
+            <p id="passwordStrength" class="text-sm mt-1"></p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              required
+              class="w-full px-4 py-3 bg-dark border border-gold/20 rounded-lg focus:border-gold focus:outline-none transition"
+              placeholder="Confirm your password"
+            />
+          </div>
+
+          <div class="flex items-start gap-2">
+            <input type="checkbox" name="agreeTerms" required class="w-4 h-4 mt-1 accent-gold" />
+            <label class="text-sm text-gray-300">
+              I agree to the <a href="#" class="text-gold hover:underline">Terms of Service</a> and
+              <a href="#" class="text-gold hover:underline">Privacy Policy</a>
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-4 py-3 bg-gradient-gold text-black rounded-lg font-bold hover:opacity-90 transition"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gold/20"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-dark-light text-gray-400">Or register with</span>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <button
+              onclick="authSystem.socialLogin('Google')"
+              class="px-4 py-3 glass rounded-lg hover:border-gold/50 transition flex items-center justify-center"
+              title="Register with Google"
+            >
+              <span class="text-2xl">🔍</span>
+            </button>
+            <button
+              onclick="authSystem.socialLogin('Facebook')"
+              class="px-4 py-3 glass rounded-lg hover:border-gold/50 transition flex items-center justify-center"
+              title="Register with Facebook"
+            >
+              <span class="text-2xl">📘</span>
+            </button>
+            <button
+              onclick="authSystem.socialLogin('Twitter')"
+              class="px-4 py-3 glass rounded-lg hover:border-gold/50 transition flex items-center justify-center"
+              title="Register with Twitter"
+            >
+              <span class="text-2xl">🐦</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="mt-6 text-center text-gray-400">
+          Already have an account?
+          <button
+            onclick="authSystem.closeModal('registerModal'); authSystem.openModal('loginModal')"
+            class="text-gold hover:underline font-semibold"
+          >
+            Login here
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Two-Factor Authentication Modal -->
+    <div id="twoFactorModal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop">
+      <div class="glass p-8 rounded-2xl max-w-md w-full mx-4 border-2 border-gold/20 modal-content">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-bold text-gradient">Two-Factor Authentication</h2>
+          <button onclick="authSystem.closeModal('twoFactorModal')" class="text-gray-400 hover:text-white text-2xl">
+            ×
+          </button>
+        </div>
+
+        <p class="text-gray-300 mb-6">Enter the 6-digit code from your authenticator app.</p>
+
+        <form id="twoFactorForm" class="space-y-4">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <!-- Brand -->

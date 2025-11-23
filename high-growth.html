@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High Growth - FunCoin</title>
+    <meta
+      name="description"
+      content="Discover FunCoin's high-growth, exponential potential and how the ecosystem is designed to scale."
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                DEFAULT: "#FFD700",
+                light: "#FFE55C",
+                dark: "#FFA500",
+              },
+              dark: {
+                DEFAULT: "#0a0a0a",
+                light: "#1a1a1a",
+                lighter: "#2a2a2a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        color: #ffffff;
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .bg-gradient-gold {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+      }
+
+      .glass {
+        background: rgba(26, 26, 26, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-gold/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img
+              src="image/Logo.png"
+              alt="FunCoin Logo"
+              class="h-10 w-10 object-contain"
+            />
+            <span class="text-2xl font-bold text-gradient">FunCoin</span>
+          </a>
+
+          <div class="flex items-center space-x-8">
+            <a href="index.html" class="hover:text-gold transition">Home</a>
+            <a href="index.html#about" class="hover:text-gold transition"
+              >About</a
+            >
+            <a href="index.html#roadmap" class="hover:text-gold transition"
+              >Roadmap</a
+            >
+            <a href="index.html#team" class="hover:text-gold transition"
+              >Team</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark"
+      ></div>
+
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20"
+      >
+        <div class="text-6xl mb-6 animate-float">&#128200;</div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          <span class="text-gradient">High Growth</span>, Exponential Potential
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto">
+          Explore how FunCoin is engineered for rapid expansion, strong demand,
+          and sustainable value creation across the ecosystem.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="index.html"
+            class="px-8 py-4 bg-gradient-gold text-black rounded-lg font-bold text-lg hover:opacity-90 transition"
+          >
+            Back to Home
+          </a>
+          <a
+            href="#drivers"
+            class="px-8 py-4 glass border-2 border-gold rounded-lg font-bold text-lg hover:bg-gold/10 transition"
+          >
+            See Growth Drivers
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Growth Thesis -->
+    <section id="drivers" class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Why FunCoin <span class="text-gradient">Scales Fast</span>
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            A clear growth engine built on utility, community, and smart token
+            design.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">&#128640;</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">Network Effects</h3>
+            <p class="text-gray-300 leading-relaxed">
+              More users drive more utility, liquidity, and developer interest,
+              compounding adoption over time.
+            </p>
+          </div>
+
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">&#128176;</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">Real Utility</h3>
+            <p class="text-gray-300 leading-relaxed">
+              Payments, staking, governance, and rewards ensure the token is
+              used daily—not just traded.
+            </p>
+          </div>
+
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <div class="text-4xl mb-4">&#9889;</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">Lean Economics</h3>
+            <p class="text-gray-300 leading-relaxed">
+              Efficient tokenomics, predictable emissions, and deflationary
+              sinks support long-term value.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Momentum Metrics -->
+    <section class="py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Momentum <span class="text-gradient">At a Glance</span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Early traction that compounds with every new participant.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass p-8 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Community</p>
+            <p class="text-4xl font-bold text-gradient">250K+</p>
+            <p class="text-gray-400 mt-1">active members</p>
+          </div>
+          <div class="glass p-8 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Transactions</p>
+            <p class="text-4xl font-bold text-gradient">18M</p>
+            <p class="text-gray-400 mt-1">on-chain per month</p>
+          </div>
+          <div class="glass p-8 rounded-xl text-center">
+            <p class="text-gray-400 mb-2">Partnerships</p>
+            <p class="text-4xl font-bold text-gradient">120+</p>
+            <p class="text-gray-400 mt-1">ecosystem integrations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flywheel -->
+    <section class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            The <span class="text-gradient">Growth Flywheel</span>
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Every action in the ecosystem feeds the next, accelerating expansion.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Acquisition</h3>
+            <ul class="space-y-3 text-gray-300">
+              <li>On-ramps in key regions make FUN coin easy to buy.</li>
+              <li>Referral rewards turn every user into a growth partner.</li>
+              <li>Marketing campaigns tailored to builders and gamers.</li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Activation</h3>
+            <ul class="space-y-3 text-gray-300">
+              <li>Fast, low-fee transactions for everyday payments.</li>
+              <li>Simple staking flows convert holders into participants.</li>
+              <li>Launchpad access encourages early product engagement.</li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Retention</h3>
+            <ul class="space-y-3 text-gray-300">
+              <li>Predictable rewards schedules keep yields transparent.</li>
+              <li>Tiered benefits for long-term holders and validators.</li>
+              <li>Governance rights align community with protocol success.</li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Expansion</h3>
+            <ul class="space-y-3 text-gray-300">
+              <li>Developer grants bring new apps and use cases to market.</li>
+              <li>Partnerships add liquidity and real-world acceptance.</li>
+              <li>Deflationary sinks increase scarcity as usage grows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Utility Section -->
+    <section class="py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Utility That <span class="text-gradient">Drives Demand</span>
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Multiple ways to use FUN, each reinforcing token velocity and value.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <h3 class="text-xl font-bold mb-3 text-gold">Payments</h3>
+            <p class="text-gray-300">
+              Everyday transfers, tipping, and merchant payments with instant
+              settlement.
+            </p>
+          </div>
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <h3 class="text-xl font-bold mb-3 text-gold">Staking</h3>
+            <p class="text-gray-300">
+              Secure the network and earn consistent rewards with low friction.
+            </p>
+          </div>
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <h3 class="text-xl font-bold mb-3 text-gold">Launchpad</h3>
+            <p class="text-gray-300">
+              Early access to ecosystem projects that add fresh demand for FUN.
+            </p>
+          </div>
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <h3 class="text-xl font-bold mb-3 text-gold">Governance</h3>
+            <p class="text-gray-300">
+              Vote on upgrades, treasury usage, and community initiatives.
+            </p>
+          </div>
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <h3 class="text-xl font-bold mb-3 text-gold">Liquidity Incentives</h3>
+            <p class="text-gray-300">
+              Rewards for providing liquidity across DeFi pairs and venues.
+            </p>
+          </div>
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <h3 class="text-xl font-bold mb-3 text-gold">Burn Mechanics</h3>
+            <p class="text-gray-300">
+              Fee burns tied to ecosystem usage create deflationary pressure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Milestones -->
+    <section class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Next <span class="text-gradient">Milestones</span>
+          </h2>
+          <p class="text-xl text-gray-300">Clear checkpoints toward mass adoption.</p>
+        </div>
+
+        <div class="space-y-8">
+          <div class="glass p-6 rounded-xl border-2 border-gold/30">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="text-sm text-gray-400">Q1</p>
+                <h3 class="text-2xl font-bold text-gold">Global Payment Rails</h3>
+                <p class="text-gray-300">Card partners and key e-commerce integrations.</p>
+              </div>
+              <span class="px-4 py-2 rounded-full bg-gold/10 text-gold">In Progress</span>
+            </div>
+          </div>
+
+          <div class="glass p-6 rounded-xl">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="text-sm text-gray-400">Q2</p>
+                <h3 class="text-2xl font-bold text-gold">DeFi Liquidity Hub</h3>
+                <p class="text-gray-300">Cross-chain pools and concentrated liquidity incentives.</p>
+              </div>
+              <span class="px-4 py-2 rounded-full bg-dark text-gold border border-gold/30">Upcoming</span>
+            </div>
+          </div>
+
+          <div class="glass p-6 rounded-xl">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="text-sm text-gray-400">Q3</p>
+                <h3 class="text-2xl font-bold text-gold">Mobile Growth Suite</h3>
+                <p class="text-gray-300">Consumer app, referrals, and in-app rewards.</p>
+              </div>
+              <span class="px-4 py-2 rounded-full bg-dark text-gold border border-gold/30">Planned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-dark">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Be Part of the <span class="text-gradient">Next Wave</span>
+        </h2>
+        <p class="text-xl text-gray-300 mb-8">
+          Join a community that is building momentum together—holders,
+          builders, and partners.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="index.html#about"
+            class="px-8 py-4 bg-gradient-gold text-black rounded-lg font-bold text-lg hover:opacity-90 transition"
+          >
+            Start with FunCoin
+          </a>
+          <a
+            href="index.html#team"
+            class="px-8 py-4 glass border-2 border-gold rounded-lg font-bold text-lg hover:bg-gold/10 transition"
+          >
+            Meet the Team
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-lighter border-t border-gold/20 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- Brand -->
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <img
+                src="image/Logo.png"
+                alt="FunCoin Logo"
+                class="h-8 w-8 object-contain"
+              />
+              <h3 class="text-2xl font-bold text-gradient">FunCoin</h3>
+            </div>
+            <p class="text-gray-400 text-sm">
+              Making cryptocurrency fun, accessible, and rewarding for everyone.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#about"
+                  class="text-gray-400 hover:text-gold transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#roadmap"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Roadmap</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#team"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Team</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="font-bold mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Whitepaper</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Audit Report</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Brand Kit</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h4 class="font-bold mb-4">Community</h4>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Twitter"
+                >dY?�</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Telegram"
+                >dY"�</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Discord"
+                >dY'�</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="GitHub"
+                >dY'�</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gold/20 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>Ac 2024 FunCoin. All rights reserved.</p>
+          <p class="mt-2">
+            <a href="#" class="hover:text-gold transition">Privacy Policy</a>
+            �?�
+            <a href="#" class="hover:text-gold transition">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

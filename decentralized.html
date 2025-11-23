@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decentralized Network - FunCoin</title>
+    <meta
+      name="description"
+      content="Learn about FunCoin's fully decentralized network and blockchain technology"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                DEFAULT: "#FFD700",
+                light: "#FFE55C",
+                dark: "#FFA500",
+              },
+              dark: {
+                DEFAULT: "#0a0a0a",
+                light: "#1a1a1a",
+                lighter: "#2a2a2a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        color: #ffffff;
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .bg-gradient-gold {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+      }
+
+      .glass {
+        background: rgba(26, 26, 26, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-gold/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img
+              src="image/Logo.png"
+              alt="FunCoin Logo"
+              class="h-10 w-10 object-contain"
+            />
+            <span class="text-2xl font-bold text-gradient">FunCoin</span>
+          </a>
+
+          <div class="flex items-center space-x-8">
+            <a href="index.html" class="hover:text-gold transition">Home</a>
+            <a href="index.html#about" class="hover:text-gold transition"
+              >About</a
+            >
+            <a href="index.html#roadmap" class="hover:text-gold transition"
+              >Roadmap</a
+            >
+            <a href="index.html#team" class="hover:text-gold transition"
+              >Team</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark"
+      ></div>
+
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20"
+      >
+        <div class="text-6xl mb-6 animate-float">🪙</div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          <span class="text-gradient">Fully Decentralized</span> Network
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+          Experience true financial freedom with FunCoin's completely
+          decentralized blockchain infrastructure
+        </p>
+      </div>
+    </section>
+
+    <!-- What is Decentralization Section -->
+    <section class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            What is <span class="text-gradient">Decentralization</span>?
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Decentralization means no single entity controls the network. Power
+            is distributed among all participants.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <div class="text-5xl mb-4">🌐</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">
+              No Central Authority
+            </h3>
+            <p class="text-gray-300 leading-relaxed">
+              Unlike traditional financial systems, FunCoin operates without
+              banks, governments, or central authorities controlling your funds.
+            </p>
+          </div>
+
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <div class="text-5xl mb-4">🔗</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">
+              Distributed Network
+            </h3>
+            <p class="text-gray-300 leading-relaxed">
+              Our blockchain is maintained by thousands of nodes worldwide,
+              ensuring no single point of failure exists.
+            </p>
+          </div>
+
+          <div class="glass p-8 rounded-xl hover:border-gold/50 transition">
+            <div class="text-5xl mb-4">👥</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">
+              Community Governed
+            </h3>
+            <p class="text-gray-300 leading-relaxed">
+              Token holders have voting rights on protocol changes, making
+              FunCoin truly community-driven.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Benefits Section -->
+    <section class="py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Benefits of <span class="text-gradient">Decentralization</span>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="glass p-8 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">✅</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gold">
+                  Censorship Resistance
+                </h3>
+                <p class="text-gray-300">
+                  No government or organization can freeze your account or block
+                  your transactions. Your funds are truly yours.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">🛡️</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gold">
+                  Enhanced Security
+                </h3>
+                <p class="text-gray-300">
+                  Distributed architecture makes the network virtually
+                  impossible to hack or manipulate.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">🌍</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gold">
+                  Global Accessibility
+                </h3>
+                <p class="text-gray-300">
+                  Anyone, anywhere can participate in the network without
+                  permission or intermediaries.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">💎</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gold">Transparency</h3>
+                <p class="text-gray-300">
+                  All transactions are recorded on the public blockchain,
+                  ensuring complete transparency and accountability.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">⚡</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gold">
+                  24/7 Availability
+                </h3>
+                <p class="text-gray-300">
+                  The network never sleeps. Trade, transfer, and transact
+                  anytime, without banking hours or holidays.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">🔓</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gold">
+                  Financial Freedom
+                </h3>
+                <p class="text-gray-300">
+                  Be your own bank. Control your wealth without relying on
+                  third-party institutions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Details Section -->
+    <section class="py-20 bg-dark-lighter">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-gradient">Technical</span> Architecture
+          </h2>
+          <p class="text-xl text-gray-300">
+            Built on cutting-edge blockchain technology
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-xl mb-8">
+          <h3 class="text-2xl font-bold mb-6 text-gold">Consensus Mechanism</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            FunCoin utilizes a Proof-of-Stake (PoS) consensus mechanism, which
+            is more energy-efficient and secure than traditional Proof-of-Work
+            systems. Validators are chosen based on their stake in the network,
+            ensuring those with the most to lose have the most incentive to act
+            honestly.
+          </p>
+          <div class="grid md:grid-cols-3 gap-4 mt-6">
+            <div class="bg-dark p-4 rounded-lg text-center">
+              <p class="text-3xl font-bold text-gradient mb-2">10,000+</p>
+              <p class="text-gray-400">Active Validators</p>
+            </div>
+            <div class="bg-dark p-4 rounded-lg text-center">
+              <p class="text-3xl font-bold text-gradient mb-2">99.9%</p>
+              <p class="text-gray-400">Network Uptime</p>
+            </div>
+            <div class="bg-dark p-4 rounded-lg text-center">
+              <p class="text-3xl font-bold text-gradient mb-2"><3s</p>
+              <p class="text-gray-400">Block Time</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Smart Contracts</h3>
+            <p class="text-gray-300 leading-relaxed">
+              Our platform supports fully decentralized smart contracts,
+              enabling trustless execution of agreements without intermediaries.
+              All contract code is open-source and audited.
+            </p>
+          </div>
+
+          <div class="glass p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gold">Node Distribution</h3>
+            <p class="text-gray-300 leading-relaxed">
+              With nodes distributed across 150+ countries, FunCoin ensures true
+              geographic decentralization, making the network resilient against
+              regional disruptions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Participate Section -->
+    <section class="py-20 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Join the <span class="text-gradient">Decentralized</span> Revolution
+          </h2>
+          <p class="text-xl text-gray-300">
+            Multiple ways to participate in the FunCoin network
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="glass p-8 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div class="text-5xl mb-4">💰</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">Hold & Earn</h3>
+            <p class="text-gray-300 mb-6">
+              Simply hold FunCoin in your wallet and earn passive rewards
+              through our staking mechanism.
+            </p>
+            <a
+              href="index.html#about"
+              class="inline-block px-6 py-3 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              Learn More
+            </a>
+          </div>
+
+          <div
+            class="glass p-8 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div class="text-5xl mb-4">🔧</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">Run a Node</h3>
+            <p class="text-gray-300 mb-6">
+              Contribute to network security and decentralization by running
+              your own validator node.
+            </p>
+            <a
+              href="index.html#roadmap"
+              class="inline-block px-6 py-3 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              Get Started
+            </a>
+          </div>
+
+          <div
+            class="glass p-8 rounded-xl text-center hover:border-gold/50 transition"
+          >
+            <div class="text-5xl mb-4">🗳️</div>
+            <h3 class="text-2xl font-bold mb-4 text-gold">Governance</h3>
+            <p class="text-gray-300 mb-6">
+              Vote on protocol upgrades and participate in shaping the future of
+              FunCoin.
+            </p>
+            <a
+              href="index.html#team"
+              class="inline-block px-6 py-3 bg-gradient-gold text-black rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              Join DAO
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-dark-lighter">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Ready to Experience
+          <span class="text-gradient">True Decentralization</span>?
+        </h2>
+        <p class="text-xl text-gray-300 mb-8">
+          Join thousands of users who have already embraced financial freedom
+          with FunCoin
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="index.html"
+            class="px-8 py-4 bg-gradient-gold text-black rounded-lg font-bold text-lg hover:opacity-90 transition"
+          >
+            Get Started
+          </a>
+          <a
+            href="index.html#about"
+            class="px-8 py-4 glass border-2 border-gold rounded-lg font-bold text-lg hover:bg-gold/10 transition"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-lighter border-t border-gold/20 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- Brand -->
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <img
+                src="image/Logo.png"
+                alt="FunCoin Logo"
+                class="h-8 w-8 object-contain"
+              />
+              <h3 class="text-2xl font-bold text-gradient">FunCoin</h3>
+            </div>
+            <p class="text-gray-400 text-sm">
+              Making cryptocurrency fun, accessible, and rewarding for everyone.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#about"
+                  class="text-gray-400 hover:text-gold transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#roadmap"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Roadmap</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#team"
+                  class="text-gray-400 hover:text-gold transition"
+                  >Team</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="font-bold mb-4">Resources</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Whitepaper</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Audit Report</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-gold transition"
+                  >Brand Kit</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h4 class="font-bold mb-4">Community</h4>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Twitter"
+                >🐦</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Telegram"
+                >📱</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="Discord"
+                >💬</a
+              >
+              <a
+                href="#"
+                class="p-3 glass rounded-lg hover:border-gold/50 transition"
+                aria-label="GitHub"
+                >💻</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gold/20 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>© 2024 FunCoin. All rights reserved.</p>
+          <p class="mt-2">
+            <a href="#" class="hover:text-gold transition">Privacy Policy</a>
+            •
+            <a href="#" class="hover:text-gold transition">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
